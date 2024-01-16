@@ -2,3 +2,38 @@
 Startup application for BYU CS 260
 ## Elevator Pitch
 One of the hardest parts of staying in shape is eating right, and a solid meal plan is necessary for many fitness goals. Especially while tracking macros, many people struggle to find variety and end up eating the same boring foods over and over again. Effective recipes aren't easy to find especially because everyone has different nutritional goals and needs. MacroShare allows you to share and discover recipes based on their nutritional content (calories, protein, fat, carbs). By saving recipes to a personal library, you can create an effective, exciting, and delicious meal plan. 
+## Design
+## Key Features
+  + Secure Login
+  + Create Recipes
+  + View community recipes
+  + Search recipes based on nutrition facts
+  + Save recipes
+  + Leave comments on recipes
+## Technologies 
+  + HTML
+    + 6 Pages with hyperlinks, images, structure:
+        + Login
+        + Home Screen
+        + Gallery
+        + Personal Gallery
+        + Create Recipe
+        + View Recipe
+  + CSS
+      + Tables of items with intuitive layout and spacing, simple design with a clean color scheme
+  + JavaScript
+      + Login feature, edit textboxes, tables, import images to post recipes. Sorting posts based on search filters. Liking and interacting with posts.
+  + Web Services
+      + Login
+      + Posting Recipes
+      + Retreiving data about posts (saves, comments)
+      + Getting new posts
+  + Authentication
+    + Storing user data and securely logging in
+  + Storing Data Persistently
+    + Storing posts respective data in a database
+    + Storing saved posts for each user
+  + Web Sockets
+      + Application will support a React framework
+  
+  
