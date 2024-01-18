@@ -40,6 +40,8 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
     + Storing posts respective data in a database
     + Storing saved posts for each user
   + Web Sockets
+      + When a user posts or interacts with a recipe, it appears in a gallery for all users. 
+  + React
       + Application will support a React framework
   
   
