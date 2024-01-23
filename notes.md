@@ -6,6 +6,5 @@ IP Adress:
 http://34.202.173.13/
 
 Remote shell into server
-ssh -i [key pair file] ubuntu@[ip address]
-example:
-➜  ssh -i ~/keys/production.pem ubuntu@53.104.2.123
+➜  ssh -i ~/.ssh/production.pem ubuntu@macroshare.click
+
