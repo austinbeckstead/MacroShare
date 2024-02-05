@@ -46,7 +46,7 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
 
 ## HTML deliverable
   + HTML Pages: 6 HTML pages: for login, home, recipe gallery, viewing recipes, creating recipes, and a gallery of saved recipes 
-  + HTML Tags: 
+  + HTML Tags: I use Head, Body, Nav, Div, Footer, Menu, and Main tags to set up the strucutre of my page. 
   + Links: Each page links Home, Gallery, and myRecipe pages have links to each other. The other pages have links to go back to the gallery. 
   + Text: Each recipe has text for instructions, ingredients, and nutritional content. 
   + Placeholder: The list of recipes is a placeholder to call JavaScript to populate the space with recipes, and links to view each recipe on a separate page. The edit recipes screen also has a placeholder for using a third party service to import an image. 
