@@ -43,5 +43,15 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
       + When a user posts or interacts with a recipe, it appears in a gallery for all users. 
   + React
       + Application will support a React framework
-  
+
+## HTML deliverable
+  + HTML Pages: 6 HTML pages: for login, home, recipe gallery, viewing recipes, creating recipes, and a gallery of saved recipes 
+  + HTML Tags: 
+  + Links: Each page links Home, Gallery, and myRecipe pages have links to each other. The other pages have links to go back to the gallery. 
+  + Text: Each recipe has text for instructions, ingredients, and nutritional content. 
+  + Placeholder: The list of recipes is a placeholder to call JavaScript to populate the space with recipes, and links to view each recipe on a separate page. The edit recipes screen also has a placeholder for using a third party service to import an image. 
+  + Images: There are images for each recipe on the explore and view recipe screens. 
+  + Login: The index.html page is a placeholder for the login page. Username display on the My Recipes screen. 
+  + Database data placeholder: Recipes on the explore and my recipes page represent data stored in the database. 
+  + WebSocket data placeholder: Comments for recipes on the "View Recipe" screen will update in realtime using WebSocket data. 
   
