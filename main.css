@@ -1,12 +1,12 @@
 main{
-    flex: 1 calc(100vh - 100px);
+    flex: 1 calc(100vh - 240px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
     background-color: beige;
     color: #323232;
-}
+    gap: 100px;
+    }
 body{
     display: flex;
     flex-direction: column;
@@ -27,17 +27,15 @@ header{
 }
 footer{
     display:flex;
-    flex: 0 30px;
+    flex: 0 170px;
     background-color: #323232;
     color: white;
-}
-nav{
-    align-self: flex-end;
+    background-image: url("/images/kitchen.jpg");
+    background-size: 100em;
 }
 menu{
     flex: 1;
     display: flex;
-    /*  overwrite Bootstrap so the menu does not wrap */
     flex-direction: row !important;
     list-style: none;
 }
@@ -46,4 +44,14 @@ li{
 }
 h1{
     padding-left: 1em;
+    font-family: 'Lora'
+
+}
+h3{
+    padding-top: 150px;
+    font-family: 'Lora'
+}
+.btn-dark{
+    width: 8em;
+    height: 4em;
 }
