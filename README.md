@@ -55,3 +55,13 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
   + Database data placeholder: Recipes on the explore and my recipes page represent data stored in the database. 
   + WebSocket data placeholder: Comments for recipes on the "View Recipe" screen will update in realtime using WebSocket data. 
   
+## CSS deliverable
+  + Prerequisite: done- Simon CSS deployed to your production environment
+  + Prerequisite: done- A link to your GitHub startup repository prominently displayed on your 			    application's home page. (On the sign in page)
+  + 30% Header, footer, and main content body. Uses flex layout for body elements with flex-sizes and gaps. 
+  + 20% Navigation elements. In the header there is a horizontal flex menu to reach all the pages. Links are modified to not be blue or underlined. 
+  + 10% Responsive to window resizing- Flex and overflow scroll boxes allow you to see all the information in lists for varying window sizes. 
+  + 20% Application elements: Bootstrap buttons, grids, and overflow. 
+  + 10% Application text content. Using Lora font family, various text colors and weights
+  + 10% Application images. Added background image for the footer using CSS. 
+

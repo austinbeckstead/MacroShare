@@ -30,7 +30,6 @@ header{
     color: #323232;
 }
 footer{
-    display:flex;
     flex: 0 170px;
     background-color: #323232;
     color: white;
