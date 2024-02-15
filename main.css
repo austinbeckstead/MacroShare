@@ -5,12 +5,14 @@ main{
     align-items: center;
     background-color: beige;
     color: #323232;
-    gap: 100px;
+    gap: 80px;
     }
 body{
     display: flex;
     flex-direction: column;
     min-width: 375px;
+    font-family: 'Lora'
+
 
 }
 header{
@@ -20,6 +22,8 @@ header{
     background-color: beige;
     color: #323232;
     justify-content: space-between;
+    font-family: 'Lora'
+
 }
 .link{
     text-decoration: none;
@@ -56,7 +60,7 @@ h3{
     height: 4em;
 }
 .btn-dark{
-    background-color: #323232;
+    background-color: #605c5c;
 
 }
 
@@ -76,12 +80,26 @@ h3{
     flex-direction: column;
     gap: 0;
 }
-.recipe-title{
-    flex: 0 80px;
-}
+
 .recipe-body{
     display: flex;
     flex-direction: row;
     gap: 60px;
+}
+.comments{
+    height: 75px;
+}
+h4{
+    font-family: 'Lora'
+
+}
+h2{
+    font-family: 'Lora';
+}
+.instructions{
+    height: 150px;
+}
+.ingredients{
+    height: 150px;
 }
 
