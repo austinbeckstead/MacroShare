@@ -51,7 +51,37 @@ h3{
     padding-top: 150px;
     font-family: 'Lora'
 }
-.btn-dark{
+.rounded-pill{
     width: 8em;
     height: 4em;
 }
+.btn-dark{
+    background-color: #323232;
+
+}
+
+.row{
+    height: 400px;
+    width: 800px;
+}
+.gallery{
+    padding-top: 100px;
+
+}
+.gallery_image{
+    width: 300px;
+}
+.recipe{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+.recipe-title{
+    flex: 0 80px;
+}
+.recipe-body{
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+}
+
