@@ -9,6 +9,7 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <script src = "create.js"></script>
   </head>
   
   <body>
@@ -23,9 +24,11 @@
     </header>
 
     <main>
+      <button class="btn btn-dark" onclick="setName()">Set</button>
+
         <form method="get">
             <label for="name">Recipe Name </label>
-        <input type="text"></input>
+        <input type="text" class = "recipe-name"></input>
         <br>
         <br>
         Upload Image:
@@ -34,10 +37,10 @@
         <br>
         <br>
         <div id="macroInput">
-        <label for="Calories">Calories</label> <input type = "text"></input>
-        <label for="Calories">Protein</label> <input type = "text"></input>
-        <label for="Calories">Carbs</label> <input type = "text"></input>
-        <label for="Calories">Fat</label> <input type = "text"></input>
+        <label class ="recipe-calories">Calories</label> <input type = "text"></input>
+        <label class ="recipe-protein">Protein</label> <input type = "text"></input>
+        <label class ="recipe-carbs">Carbs</label> <input type = "text"></input>
+        <label class ="recipe-fat">Fat</label> <input type = "text"></input>
         </div>
         <br>
         Ingredients
@@ -45,8 +48,8 @@
         Instructions
         <textarea></textarea>
         <br><br>
-        <button type="button">Save</button>
-        <button type="submit">Delete</button>
+        <button type="button" onclick = "save()">Save</button>
+        <button type="button" onclick = "exit()">Cancel</button>
 
         </form>
 
