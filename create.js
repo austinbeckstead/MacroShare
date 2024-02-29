@@ -8,6 +8,8 @@ class Recipe{
         this.fat = fat;
         this.ingredients = ingredients;
         this.instructions = instructions;
+        this.owner = localStorage.getItem('username');
+        this.comments = [];
     }
 }
 function save(){
@@ -28,6 +30,7 @@ function exit(){
 
 function readRecipe(){
     const name = document.querySelector(".recipe-name").value;
+    const image = document.querySelector(".recipe-image").value;
     const calories = document.querySelector(".recipe-calories").value;
     const protein = document.querySelector(".recipe-protein").value;
     const carbs = document.querySelector(".recipe-carbs").value;
@@ -35,7 +38,7 @@ function readRecipe(){
     const ingredients = document.querySelector(".recipe-ingredients").value;
     const instructions = document.querySelector(".recipe-instructions").value;
 
-    return new Recipe(name, null, calories, protein, carbs, fat, ingredients, instructions);
+    return new Recipe(name, image, calories, protein, carbs, fat, ingredients, instructions);
 }
 function addRecipe(recipes, recipe){
     recipes.push(recipe);
