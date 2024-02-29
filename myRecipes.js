@@ -1,4 +1,6 @@
 function loadRecipes() {
+    const userTitle = document.querySelector(".user-name");
+    userTitle.textContent = localStorage.getItem('username');
     let recipes = [];
     const recipesText = localStorage.getItem('userRecipes');
     if (recipesText) {

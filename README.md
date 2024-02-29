@@ -63,5 +63,9 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
   + 10% Responsive to window resizing- Flex and overflow scroll boxes allow you to see all the information in lists for varying window sizes. 
   + 20% Application elements: Bootstrap buttons, grids, and overflow. 
   + 10% Application text content. Using Lora font family, various text colors and weights
-  + 10% Application images. Added background image for the footer using CSS. 
+  + 10% Application images. Added background image for the footer using CSS.
+
+## CSS deliverable
+  + 
+ 
 
