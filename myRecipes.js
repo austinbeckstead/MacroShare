@@ -1,23 +1,45 @@
-class Gallery{
+function loadRecipes() {
+    let recipes = [];
+    const recipesText = localStorage.getItem('userRecipes');
+    if (recipesText) {
+      recipes = JSON.parse(recipesText);
+    }
+    else{
+        return;
+    }
+    const galleryBody = document.querySelector('.gallery');
+    const galleryList = document.createElement('div');
+    galleryList.classList.add("row", "overflow-auto", "gy-4");
+    for (const [i, recipe] of recipes.entries()) {
+        const galleryElement = document.createElement('div');
+        galleryElement.className = "col";
+        const title = document.createElement('div');
+        const image = document.createElement('img');
+        const macros = document.createElement('div');
+        const viewButton = document.createElement('button');
 
-    constructor(){
-    const userName = document.querySelector('.user-name');
-    userName.textContent = this.getName();
-    const recipeText = document.querySelector('.recipe');
-    const aa = localStorage.getItem('recipes');
-    if(aa){
-    const bb = JSON.parse(aa);
-    let text = "qa";
-    for (i in bb){
-        text += i.calories;
-    }
-    recipeText.textContent = text;
-    }
-    }   
+        title.classList.add("centered-title");
+        image.className = "gallery_image";
+        image.src = recipe.image;
+        viewButton.classList.add("btn", "btn-secondary");
+        viewButton.onclick = function(){loadRecipe(recipe.name)};
+        viewButton.textContent = "View Recipe"
+        title.textContent = recipe.name;
+        macros.textContent = "Calories: " + recipe.calories + " Protein: " + recipe.protein
+        + " Carbs: " + recipe.carbs + " Fat: " + recipe.fat;
 
-    getName(){
-    return localStorage.getItem('username');
+        galleryElement.appendChild(title);
+        galleryElement.appendChild(image);
+        galleryElement.appendChild(macros);
+        galleryElement.appendChild(viewButton);
+
+        galleryList.appendChild(galleryElement);
     }
+    galleryBody.appendChild(galleryList);
 }
-const myGallery = new Gallery();
+function loadRecipe(name){
+    localStorage.setItem('currRecipe', name);
+    window.location.href = "recipe.html";
+}
 
+loadRecipes();

@@ -13,7 +13,6 @@ function loadRecipes() {
     for (const [i, recipe] of recipes.entries()) {
         const galleryElement = document.createElement('div');
         galleryElement.className = "col";
-
         const title = document.createElement('div');
         const image = document.createElement('img');
         const macros = document.createElement('div');

@@ -33,6 +33,7 @@ function loadRecipe(){
     const comments = document.createElement('div');
     const commentList = document.createElement('ul');
     comments.appendChild(commentList);
+    const saveButton = document.createElement('button');
     //if (currRecipe.comments){
     //comments.appendChild(generateComments(currRecipe));
     //}
@@ -61,6 +62,11 @@ function loadRecipe(){
     submitComment.onclick = function(){
         submit(localStorage.getItem('username'));
     };
+    saveButton.type = 'button';
+    saveButton.textContent = "Save Recipe";
+    saveButton.onclick = function(){
+        saveRecipe(currRecipe);
+    };
 
 
 
@@ -77,6 +83,8 @@ function loadRecipe(){
     galleryBody.appendChild(comments);
     galleryBody.appendChild(commentField);
     galleryBody.appendChild(submitComment);
+    galleryBody.appendChild(saveButton);
+
 
 }
 setInterval(() => {
@@ -93,6 +101,23 @@ function submit(name){
     newComment.textContent = name + ": " + text;
     commentList.appendChild(newComment);
 };
+function saveRecipe(recipe){
+    let recipes = [];
+    const recipesText = localStorage.getItem('userRecipes');
+    if (recipesText) {
+      recipes = JSON.parse(recipesText);
+    }
+    for (const [i, r] of recipes.entries()) {
+        if(recipe.name === r.name){
+            return;
+        }
+    }
+
+
+    recipes.push(recipe);
+    localStorage.setItem('userRecipes', JSON.stringify(recipes));
+
+}
 
 
 /*
