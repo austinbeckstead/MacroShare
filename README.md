@@ -66,6 +66,14 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
   + 10% Application images. Added background image for the footer using CSS.
 
 ## CSS deliverable
-  + 
+  + Prerequisite: done- Review and deploy Simon JavaScript
+  + Have JavaScript that takes user input and adds it to the mocked database data: done - when you create and save a recipe, it is saved in localStorage
+  + Have JavaScript that reads the login input and displays the user name: done- username displayed on the My Recipes page
+  + Have JavaScript that mocks your database data and injects it into the DOM: done- created and saved recipes from localStorage are entered into the DOM on explore and my recipes pages.
+  + Use the localstorage API to keep data between pages and browser sessions: done- localStorage saves username, recipe data, and saved recipe data
+  + Have JavaScript that mocks out the realtime data you expect to get from the server using WebSocket and inject it into the DOM: done: comments work like a chat feature on the view recipe page (accessed from explore page). 
+
+
+
  
 
