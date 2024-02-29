@@ -116,6 +116,7 @@ function saveRecipe(recipe){
 
     recipes.push(recipe);
     localStorage.setItem('userRecipes', JSON.stringify(recipes));
+    window.location.href = "myRecipes.html";
 
 }
 

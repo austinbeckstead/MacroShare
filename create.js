@@ -21,11 +21,11 @@ function save(){
     }
     recipes = addRecipe(recipes, recipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
-    window.location.href = "myRecipes.html";
+    window.location.href = "gallery.html";
 
 }
 function exit(){
-    window.location.href = "myRecipes.html";
+    window.location.href = "gallery.html";
 }
 
 function readRecipe(){
