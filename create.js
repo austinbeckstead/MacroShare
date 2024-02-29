@@ -32,8 +32,10 @@ function readRecipe(){
     const protein = document.querySelector(".recipe-protein").value;
     const carbs = document.querySelector(".recipe-carbs").value;
     const fat = document.querySelector(".recipe-fat").value;
-    return new Recipe(name, null, calories, protein, carbs, fat, null, null);
+    const ingredients = document.querySelector(".recipe-ingredients").value;
+    const instructions = document.querySelector(".recipe-instructions").value;
 
+    return new Recipe(name, null, calories, protein, carbs, fat, ingredients, instructions);
 }
 function addRecipe(recipes, recipe){
     recipes.push(recipe);
