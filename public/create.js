@@ -12,7 +12,7 @@ class Recipe{
         this.comments = [];
     }
 }
-function save(){
+async function save(){
     const recipe = readRecipe();
     try {
         const response = await fetch('/api/recipe', {
@@ -27,7 +27,7 @@ function save(){
       }
     window.location.href = "gallery.html";
 }
-
+F
 function saveLocal(recipe){
     let recipes = [];
     const recipesText = localStorage.getItem('recipes');
