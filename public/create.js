@@ -13,17 +13,31 @@ class Recipe{
     }
 }
 function save(){
+    const recipe = readRecipe();
+    try {
+        const response = await fetch('/api/recipe', {
+          method: 'POST',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify(recipe),
+        });
+        const recipes = await response.json();
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+      } catch {
+        this.saveLocal(recipe);
+      }
+    window.location.href = "gallery.html";
+}
+
+function saveLocal(recipe){
     let recipes = [];
     const recipesText = localStorage.getItem('recipes');
-    const recipe = readRecipe();
     if(recipesText){
-       recipes = JSON.parse(recipesText);
+      recipes = JSON.parse(recipesText);
     }
     recipes = addRecipe(recipes, recipe);
     localStorage.setItem('recipes', JSON.stringify(recipes));
-    window.location.href = "gallery.html";
-
 }
+
 function exit(){
     window.location.href = "gallery.html";
 }
