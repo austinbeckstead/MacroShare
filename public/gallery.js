@@ -1,11 +1,22 @@
 function loadRecipes() {
+    //let recipes = [];
+    //const recipesText = localStorage.getItem('recipes');
+    //if (recipesText) {
+      //recipes = JSON.parse(recipesText);
+    //}
+    //else{
+      //  return;
+    //}
     let recipes = [];
-    const recipesText = localStorage.getItem('recipes');
-    if (recipesText) {
-      recipes = JSON.parse(recipesText);
-    }
-    else{
-        return;
+    try {
+      const response = await fetch('/api/recipes');
+      recipes = await response.json();
+      localStorage.setItem('recipes', JSON.stringify(recipes));
+    } catch {
+      const recipesText = localStorage.getItem('recipes');
+      if (recipesText) {
+        recipes = JSON.parse(recipesText);
+      }
     }
     const galleryBody = document.querySelector('.gallery');
     const galleryList = document.createElement('div');
