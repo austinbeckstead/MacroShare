@@ -21,7 +21,7 @@ apiRouter.get('/recipes', (_req, res) => {
 
 // AddRecipe
 apiRouter.post('/recipe', (req, res) => {
-  recipes = updateRecipes(req.body, recipes);
+  recipes = addRecipe(req.body, recipes);
   res.send(recipes);
 });
 

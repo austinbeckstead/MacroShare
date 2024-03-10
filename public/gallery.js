@@ -1,13 +1,13 @@
-function loadRecipes() {
-    //let recipes = [];
-    //const recipesText = localStorage.getItem('recipes');
-    //if (recipesText) {
-      //recipes = JSON.parse(recipesText);
-    //}
-    //else{
-      //  return;
-    //}
+async function loadRecipes() {
     let recipes = [];
+    const recipesText = localStorage.getItem('recipes');
+    if (recipesText) {
+      recipes = JSON.parse(recipesText);
+    }
+    else{
+        return;
+    }
+    /*let recipes = [];
     try {
       const response = await fetch('/api/recipes');
       recipes = await response.json();
@@ -17,7 +17,11 @@ function loadRecipes() {
       if (recipesText) {
         recipes = JSON.parse(recipesText);
       }
+      else{
+        return;
+      }
     }
+    */
     const galleryBody = document.querySelector('.gallery');
     const galleryList = document.createElement('div');
     galleryList.classList.add("row", "overflow-auto", "gy-4");

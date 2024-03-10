@@ -27,7 +27,7 @@ async function save(){
       }
     window.location.href = "gallery.html";
 }
-F
+
 function saveLocal(recipe){
     let recipes = [];
     const recipesText = localStorage.getItem('recipes');
