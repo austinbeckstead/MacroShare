@@ -23,7 +23,7 @@ async function save(){
         const recipes = await response.json();
         localStorage.setItem('recipes', JSON.stringify(recipes));
       } catch {
-        this.saveLocal(recipe);
+        saveLocal(recipe);
       }
     window.location.href = "gallery.html";
 }
