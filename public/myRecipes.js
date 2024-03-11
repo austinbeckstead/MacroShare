@@ -1,6 +1,7 @@
-function loadRecipes() {
+async function loadRecipes() {
     const userTitle = document.querySelector(".user-name");
     userTitle.textContent = localStorage.getItem('username');
+    /*
     let recipes = [];
     const recipesText = localStorage.getItem('userRecipes');
     if (recipesText) {
@@ -9,6 +10,22 @@ function loadRecipes() {
     else{
         return;
     }
+    */
+    let recipes = [];
+    try {
+      const response = await fetch('/api/userRecipes');
+      recipes = await response.json();
+      localStorage.setItem('userRecipes', JSON.stringify(recipes));
+    } catch {
+      const recipesText = localStorage.getItem('userRecipes');
+      if (recipesText) {
+        recipes = JSON.parse(recipesText);
+      }
+      else{
+        return;
+      }
+    }
+
     const galleryBody = document.querySelector('.gallery');
     const galleryList = document.createElement('div');
     galleryList.classList.add("row", "overflow-auto", "gy-4");
