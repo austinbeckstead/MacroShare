@@ -90,8 +90,15 @@ function loadRecipe(){
 setInterval(() => {
     const commentList = document.querySelector(".comment-list");
     const newComment = document.createElement('li');
-    newComment.textContent = "User: This is a comment";
-    commentList.appendChild(newComment);
+    fetch('https://api.quotable.io/random')
+    .then((response) => response.json())
+    .then((data) => {
+        const commentList = document.querySelector(".comment-list");
+        const newComment = document.createElement('li');
+        newComment.textContent = data.author + ": " + data.content;
+        commentList.appendChild(newComment);
+
+    });
 }, 10000);
 function submit(name){
     const commentList = document.querySelector(".comment-list");
