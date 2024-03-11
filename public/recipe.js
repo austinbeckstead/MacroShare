@@ -103,19 +103,38 @@ function submit(name){
 };
 function saveRecipe(recipe){
     let recipes = [];
-    const recipesText = localStorage.getItem('userRecipes');
-    if (recipesText) {
-      recipes = JSON.parse(recipesText);
+    const username = localStorage.getItem('username');
+    try {
+      const response = await fetch('/api/userRecipes/${username}');
+      recipes = await response.json();
+      localStorage.setItem('userRecipes', JSON.stringify(recipes));
+    } catch {
+      const recipesText = localStorage.getItem('userRecipes');
+      if (recipesText) {
+        recipes = JSON.parse(recipesText);
+      }
+      else{
+        return;
+      }
     }
-    for (const [i, r] of recipes.entries()) {
+        for (const [i, r] of recipes.entries()) {
         if(recipe.name === r.name){
             return;
         }
     }
-
-
     recipes.push(recipe);
-    localStorage.setItem('userRecipes', JSON.stringify(recipes));
+    try {
+        const response = await fetch('/api/userRecipe/${username}', {
+          method: 'POST',
+          headers: {'content-type': 'application/json'},
+          body: JSON.stringify(recipes),
+        });
+        const recipes = await response.json();
+        localStorage.setItem('recipes', JSON.stringify(recipes));
+      } catch {
+        localStorage.setItem('userRecipes', JSON.stringify(recipes));
+}
+
     window.location.href = "myRecipes.html";
 
 }
