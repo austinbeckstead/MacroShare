@@ -101,11 +101,11 @@ function submit(name){
     newComment.textContent = name + ": " + text;
     commentList.appendChild(newComment);
 };
-function saveRecipe(recipe){
+async function saveRecipe(recipe){
     let recipes = [];
     const username = localStorage.getItem('username');
     try {
-      const response = await fetch('/api/userRecipes/${username}');
+      const response = await fetch(`/api/userRecipes/${username}`);
       recipes = await response.json();
       localStorage.setItem('userRecipes', JSON.stringify(recipes));
     } catch {
@@ -124,7 +124,7 @@ function saveRecipe(recipe){
     }
     recipes.push(recipe);
     try {
-        const response = await fetch('/api/userRecipe/${username}', {
+        const response = await fetch(`/api/userRecipe/${username}`, {
           method: 'POST',
           headers: {'content-type': 'application/json'},
           body: JSON.stringify(recipes),
