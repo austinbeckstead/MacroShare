@@ -32,7 +32,7 @@ apiRouter.get('/userRecipes/:username', (req, res) => {
   });
 
   apiRouter.post('/userRecipe/:username', (req, res) => {
-    userRecipes = setUserRecipes(req.body, _req.params.username, userRecipes);
+    userRecipes = setUserRecipes(req.body, req.params.username, userRecipes);
     res.send(userRecipes);
   });
 
