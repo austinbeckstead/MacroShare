@@ -9,12 +9,11 @@
   }
 */
 
-function login(){
-  console.log("HE");
-  loginOrCreate(`/auth/login`);
+async function login(){
+  loginOrCreate(`/api/auth/login`);
 }
 async function create() {
-  loginOrCreate(`/auth/create`);
+  loginOrCreate(`/api/auth/create`);
 }
 async function loginOrCreate(endpoint) {
   const username = document.querySelector('#username')?.value;

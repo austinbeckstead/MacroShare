@@ -13,30 +13,27 @@ app.use(express.json());
 
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
+app.use(cookieParser());
 
 // Router for service endpoints
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-var secureApiRouter = express.Router();
-apiRouter.use(secureApiRouter);
+
 
 apiRouter.post('/auth/create', async (req, res) => {
   if (await DB.getUser(req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {
     const user = await DB.createUser(req.body.username, req.body.password);
-
     setAuthCookie(res, user.token);
-
     res.send({
       id: user._id,
-    });
+});
   }
 });
 
 apiRouter.post('/auth/login', async (req, res) => {
-  console.log("Logging in");
   const user = await DB.getUser(req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
@@ -63,6 +60,10 @@ apiRouter.get('/user/:username', async (req, res) => {
   res.status(404).send({ msg: 'Unknown' });
 });
 
+
+var secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
 secureApiRouter.use(async (req, res, next) => {
   authToken = req.cookies[authCookieName];
   const user = await DB.getUserByToken(authToken);
@@ -74,15 +75,20 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetRecipes
-apiRouter.get('/recipes', (_req, res) => {
-  res.send(recipes);
+apiRouter.get('/recipes', async (_req, res) => {
+  const allRecipes = await DB.getRecipes();
+  res.send(allRecipes);
+  //res.send(recipes);
 });
 
 
 // AddRecipe
-apiRouter.post('/recipe', (req, res) => {
-  recipes = addRecipe(req.body, recipes);
-  res.send(recipes);
+apiRouter.post('/recipe', async (req, res) => {
+  const newRecipe = await DB.addRecipe(req.body);
+  const allRecipes = await DB.getRecipes();
+  res.send(allRecipes);
+  //recipes = addRecipe(req.body, recipes);
+  //res.send(recipes);
 });
 
 let userRecipes = new Map();
