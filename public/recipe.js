@@ -114,17 +114,14 @@ async function saveRecipe(recipe){
     try {
       const response = await fetch(`/api/userRecipes/${username}`);
       if(response.ok){
-        let info = await response.text();
-        if(info != ""){
       recipes = await response.json();
         }
         else{
             const recipesText = localStorage.getItem('userRecipes');
-            recipes = JSON.parse(recipesText);
-            
+            recipes = JSON.parse(recipesText);  
         }
       }
-    } catch {
+    catch {
       const recipesText = localStorage.getItem('userRecipes');
         recipes = JSON.parse(recipesText);
     }

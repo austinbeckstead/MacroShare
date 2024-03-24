@@ -18,7 +18,8 @@ async function loadRecipes() {
       const response = await fetch(`/api/userRecipes/${username}`);
       recipes = await response.json();
       localStorage.setItem('userRecipes', JSON.stringify(recipes));
-    } catch {
+    } 
+    catch {
       const recipesText = localStorage.getItem('userRecipes');
       if (recipesText) {
         recipes = JSON.parse(recipesText);
@@ -27,6 +28,7 @@ async function loadRecipes() {
         return;
       }
     }
+    
 
     const galleryBody = document.querySelector('.gallery');
     const galleryList = document.createElement('div');

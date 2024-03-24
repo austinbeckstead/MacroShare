@@ -57,15 +57,20 @@ async function addUserRecipe(username, newRecipes) {
             { $set: { recipes: newRecipes } },
             { upsert: true }
           );
-      return result;
+      return newRecipes;
   }
 
-  function getUserRecipes(username) {
+  async function getUserRecipes(username) {
       const cursor = db.collection('userRecipes').find({ username: username });
-      const userRecipes = cursor.toArray();
-      return userRecipes;
+      const userRecipes = await cursor.toArray();
+      if (userRecipes.length > 0) {
+        // If there are user recipes found, return the value of the 'recipes' field
+        return userRecipes.map(doc => doc.recipes);
+    } else {
+        // If no user recipes found, return an empty array
+        return [];
+    }
   }
-  
 module.exports = {
   getUser,
   getUserByToken,

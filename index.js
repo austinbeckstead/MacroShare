@@ -98,14 +98,16 @@ function setUserRecipes(updatedRecipes, username){
 }
 
 
-apiRouter.get('/userRecipes/:username', (req, res) => {
-    res.send(userRecipes.get(req.params.username));
+apiRouter.get('/userRecipes/:username', async (req, res) => {
+    const newRecipes = await DB.getUserRecipes(req.params.username);
+    res.send(newRecipes);
   });
 
-  apiRouter.post('/userRecipe/:username', (req, res) => {
-    setUserRecipes(req.body, req.params.username);
-    res.send(userRecipes.get(req.params.username));
+  apiRouter.post('/userRecipe/:username', async (req, res) => {
+    const newRecipes = DB.addUserRecipe(req.params.username, req.body);
+    res.send(newRecipes);
   });
+
 
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
