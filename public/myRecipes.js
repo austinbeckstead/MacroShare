@@ -1,6 +1,8 @@
 async function loadRecipes() {
     const userTitle = document.querySelector(".user-name");
     userTitle.textContent = localStorage.getItem('username');
+    const username = localStorage.getItem('username');
+
     /*
     let recipes = [];
     const recipesText = localStorage.getItem('userRecipes');
@@ -13,7 +15,7 @@ async function loadRecipes() {
     */
     let recipes = [];
     try {
-      const response = await fetch('/api/userRecipes');
+      const response = await fetch(`/api/userRecipes/${username}`);
       recipes = await response.json();
       localStorage.setItem('userRecipes', JSON.stringify(recipes));
     } catch {

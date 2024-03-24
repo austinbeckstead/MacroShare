@@ -113,31 +113,38 @@ async function saveRecipe(recipe){
     const username = localStorage.getItem('username');
     try {
       const response = await fetch(`/api/userRecipes/${username}`);
+      if(response.ok){
+        let info = await response.text();
+        if(info != ""){
       recipes = await response.json();
-      localStorage.setItem('userRecipes', JSON.stringify(recipes));
+        }
+        else{
+            const recipesText = localStorage.getItem('userRecipes');
+            recipes = JSON.parse(recipesText);
+            
+        }
+      }
     } catch {
       const recipesText = localStorage.getItem('userRecipes');
-      if (recipesText) {
         recipes = JSON.parse(recipesText);
-      }
-      else{
-        return;
-      }
     }
+    localStorage.setItem('userRecipes', JSON.stringify(recipes));
+
         for (const [i, r] of recipes.entries()) {
         if(recipe.name === r.name){
+            window.location.href = "myRecipes.html";
             return;
         }
     }
     recipes.push(recipe);
     try {
-        const response = await fetch(`/api/userRecipe/${username}`, {
+        const saveResponse = await fetch(`/api/userRecipe/${username}`, {
           method: 'POST',
           headers: {'content-type': 'application/json'},
           body: JSON.stringify(recipes),
         });
-        const recipes = await response.json();
-        localStorage.setItem('recipes', JSON.stringify(recipes));
+        const saveRecipes = await saveResponse.json();
+        localStorage.setItem('userRecipes', JSON.stringify(saveRecipes));
       } catch {
         localStorage.setItem('userRecipes', JSON.stringify(recipes));
 }

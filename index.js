@@ -26,14 +26,20 @@ apiRouter.post('/recipe', (req, res) => {
   res.send(recipes);
 });
 
+let userRecipes = new Map();
+
+function setUserRecipes(updatedRecipes, username){
+    userRecipes.set(username, updatedRecipes);
+}
+
 
 apiRouter.get('/userRecipes/:username', (req, res) => {
     res.send(userRecipes.get(req.params.username));
   });
 
   apiRouter.post('/userRecipe/:username', (req, res) => {
-    userRecipes = setUserRecipes(req.body, req.params.username, userRecipes);
-    res.send(userRecipes);
+    setUserRecipes(req.body, req.params.username);
+    res.send(userRecipes.get(req.params.username));
   });
 
 // Return the application's default page if the path is unknown
@@ -52,8 +58,3 @@ function addRecipe(newRecipe, recipes) {
     return recipes;
 }
 
-let userRecipes = new Map();
-function setUserRecipes(updatedRecipes, username, userRecipes){
-    userRecipes.set(username, updatedRecipes);
-    return userRecipes;
-}
