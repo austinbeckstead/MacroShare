@@ -61,16 +61,14 @@ async function addUserRecipe(username, newRecipes) {
   }
 
   async function getUserRecipes(username) {
-      const cursor = db.collection('userRecipes').find({ username: username });
-      const userRecipes = await cursor.toArray();
-      if (userRecipes.length > 0) {
-        // If there are user recipes found, return the value of the 'recipes' field
-        return userRecipes.map(doc => doc.recipes);
-    } else {
-        // If no user recipes found, return an empty array
-        return [];
-    }
-  }
+    const cursor = db.collection('userRecipes').find({ username: username });
+    const userRecipes = await cursor.toArray();
+    
+    // Extract the 'recipes' field from the first document (if exists)
+    const recipesArray = userRecipes.length > 0 ? userRecipes[0].recipes : [];
+
+    return recipesArray;
+}
 module.exports = {
   getUser,
   getUserByToken,
