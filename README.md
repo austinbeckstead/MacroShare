@@ -92,7 +92,7 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
   + Store encrypted credentials in your database: username and encrypted password are stored
   + Allow existing users to provide credentials: Click "Login" on index.html after entering credentials
   + Authenticate users by comparing provided credentials against those stored in the database: Authentication works using database data
-  + Restrict access to parts of the application that require authorization: you can only reach the other screens once you are logged in
+  + Restrict access to parts of the application that require authorization: (Fixed from first submission): Endpoints use a secureAPI router
 
 
 
