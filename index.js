@@ -75,7 +75,7 @@ secureApiRouter.use(async (req, res, next) => {
 });
 
 // GetRecipes
-apiRouter.get('/recipes', async (_req, res) => {
+secureApiRouter.get('/recipes', async (_req, res) => {
   const allRecipes = await DB.getRecipes();
   res.send(allRecipes);
   //res.send(recipes);
@@ -83,7 +83,7 @@ apiRouter.get('/recipes', async (_req, res) => {
 
 
 // AddRecipe
-apiRouter.post('/recipe', async (req, res) => {
+secureApiRouter.post('/recipe', async (req, res) => {
   const newRecipe = await DB.addRecipe(req.body);
   const allRecipes = await DB.getRecipes();
   res.send(allRecipes);
@@ -98,7 +98,7 @@ function setUserRecipes(updatedRecipes, username){
 }
 
 
-apiRouter.get('/userRecipes/:username', async (req, res) => {
+secureApiRouter.get('/userRecipes/:username', async (req, res) => {
     const newRecipes = await DB.getUserRecipes(req.params.username);
     res.send(newRecipes);
   });
