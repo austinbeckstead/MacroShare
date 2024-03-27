@@ -101,6 +101,7 @@ setInterval(() => {
 function submit(name){
     const comment = document.querySelector('.comment-field').value;
     broadcastComment(name, localStorage.getItem('currRecipe'), comment);
+    document.querySelector('.comment-field').value = "";
 };
 
 async function saveRecipe(recipe){
