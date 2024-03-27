@@ -40,6 +40,7 @@ function loadRecipe(){
     const commentField = document.createElement('input');
     const submitComment = document.createElement('button');
 
+    configureWebSocket();
 
 
     name.textContent = currRecipe.name;
@@ -67,10 +68,6 @@ function loadRecipe(){
     saveButton.onclick = function(){
         saveRecipe(currRecipe);
     };
-
-
-
-
     galleryBody.appendChild(name);
     galleryBody.appendChild(image);
     galleryBody.appendChild(macros);
@@ -100,14 +97,12 @@ setInterval(() => {
 
     });
 }, 10000);
-function submit(name){
-    const commentList = document.querySelector(".comment-list");
-    const newComment = document.createElement('li');
-    const text = document.querySelector('.comment-field').value;
 
-    newComment.textContent = name + ": " + text;
-    commentList.appendChild(newComment);
+function submit(name){
+    const comment = document.querySelector('.comment-field').value;
+    broadcastComment(name, localStorage.getItem('currRecipe'), comment);
 };
+
 async function saveRecipe(recipe){
     let recipes = [];
     const username = localStorage.getItem('username');
@@ -149,6 +144,32 @@ async function saveRecipe(recipe){
     window.location.href = "myRecipes.html";
 
 }
+function configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    this.socket.onmessage = async (event) => {
+      const msg = JSON.parse(await event.data.text());
+      if (msg.recipe === localStorage.getItem('currRecipe')) {
+        showComment(msg.from + ': ' + msg.value);
+      }
+    };
+  }
+
+function broadcastComment(from, recipe, value) {
+    const event = {
+      from: from,
+      recipe: recipe,
+      value: value,
+    };
+    this.socket.send(JSON.stringify(event));
+  }
+  function showComment(comment){
+    const commentList = document.querySelector(".comment-list");
+    const newComment = document.createElement('li');
+    const text = comment;
+    newComment.textContent = comment;
+    commentList.appendChild(newComment);
+  }
 
 
 /*

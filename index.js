@@ -14,6 +14,7 @@ app.use(express.json());
 // Serve up the front-end static content hosting
 app.use(express.static('public'));
 app.use(cookieParser());
+const { peerProxy } = require('./peerProxy.js');
 
 // Router for service endpoints
 var apiRouter = express.Router();
@@ -122,9 +123,11 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpService);
 
 // addRecipe stores a new recipe for as long as the service is running 
 /*let recipes = [];
