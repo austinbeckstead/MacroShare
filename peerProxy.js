@@ -24,7 +24,7 @@ function peerProxy(httpServer) {
       connections.forEach((c) => {
           c.ws.send(data);
         
-          });
+      });
     });
 
     // Remove the closed connection so we don't try to forward anymore

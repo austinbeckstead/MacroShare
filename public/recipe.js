@@ -42,7 +42,7 @@ function loadRecipe(){
 
     configureWebSocket();
 
-    name.className='recipe_title';
+
     name.textContent = currRecipe.name;
     image.src = currRecipe.image;
     image.className='gallery_image';
@@ -96,11 +96,7 @@ setInterval(() => {
         commentList.appendChild(newComment);
 
     });
-<<<<<<< HEAD
 }, 10000);
-=======
-}, 20000);
->>>>>>> 779d83a94d2c2281bd7216d2b20d5b7f1f333e2b
 
 function submit(name){
     const comment = document.querySelector('.comment-field').value;
@@ -153,14 +149,9 @@ function configureWebSocket() {
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
-<<<<<<< HEAD
       if (msg.recipe === localStorage.getItem('currRecipe')) {
         showComment(msg.from + ': ' + msg.value);
       }
-=======
-        showComment(msg.from + ': ' + msg.value, msg.recipe);
-      
->>>>>>> 779d83a94d2c2281bd7216d2b20d5b7f1f333e2b
     };
   }
 
@@ -172,22 +163,12 @@ function broadcastComment(from, recipe, value) {
     };
     this.socket.send(JSON.stringify(event));
   }
-<<<<<<< HEAD
   function showComment(comment){
-=======
-  function showComment(comment, recipe){
->>>>>>> 779d83a94d2c2281bd7216d2b20d5b7f1f333e2b
     const commentList = document.querySelector(".comment-list");
     const newComment = document.createElement('li');
     const text = comment;
     newComment.textContent = comment;
-<<<<<<< HEAD
     commentList.appendChild(newComment);
-=======
-    if(document.querySelector('.recipe_title').textContent === recipe){
-    commentList.appendChild(newComment);
-    }
->>>>>>> 779d83a94d2c2281bd7216d2b20d5b7f1f333e2b
   }
 
 
