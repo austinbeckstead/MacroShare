@@ -96,7 +96,7 @@ setInterval(() => {
         commentList.appendChild(newComment);
 
     });
-}, 10000);
+}, 20000);
 
 function submit(name){
     const comment = document.querySelector('.comment-field').value;
