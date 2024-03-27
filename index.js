@@ -3,12 +3,9 @@ const app = express();
 const DB = require('./database.js');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
+//const { peerProxy } = require('./peerProxy.js');
 const authCookieName = 'token';
-
-// The service port. In production the front-end code is statically hosted by the service on the same port.
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
-
-// JSON body parsing using built-in middleware
 app.use(express.json());
 
 // Serve up the front-end static content hosting
@@ -122,9 +119,12 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
+
+//peerProxy(httpService);
+
 
 // addRecipe stores a new recipe for as long as the service is running 
 /*let recipes = [];
