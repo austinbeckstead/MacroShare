@@ -42,7 +42,7 @@ function loadRecipe(){
 
     configureWebSocket();
 
-
+    name.className='recipe_title';
     name.textContent = currRecipe.name;
     image.src = currRecipe.image;
     image.className='gallery_image';
@@ -96,7 +96,7 @@ setInterval(() => {
         commentList.appendChild(newComment);
 
     });
-}, 10000);
+}, 20000);
 
 function submit(name){
     const comment = document.querySelector('.comment-field').value;
@@ -149,9 +149,8 @@ function configureWebSocket() {
     this.socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
     this.socket.onmessage = async (event) => {
       const msg = JSON.parse(await event.data.text());
-      if (msg.recipe === localStorage.getItem('currRecipe')) {
-        showComment(msg.from + ': ' + msg.value);
-      }
+        showComment(msg.from + ': ' + msg.value, msg.recipe);
+      
     };
   }
 
@@ -163,12 +162,14 @@ function broadcastComment(from, recipe, value) {
     };
     this.socket.send(JSON.stringify(event));
   }
-  function showComment(comment){
+  function showComment(comment, recipe){
     const commentList = document.querySelector(".comment-list");
     const newComment = document.createElement('li');
     const text = comment;
     newComment.textContent = comment;
+    if(document.querySelector('.recipe_title').textContent === recipe){
     commentList.appendChild(newComment);
+    }
   }
 
 
