@@ -40,7 +40,7 @@ function loadRecipe(){
     const commentField = document.createElement('input');
     const submitComment = document.createElement('button');
 
-    //configureWebSocket();
+    configureWebSocket();
 
 
     name.textContent = currRecipe.name;
@@ -100,7 +100,7 @@ setInterval(() => {
 
 function submit(name){
     const comment = document.querySelector('.comment-field').value;
-    //broadcastComment(name, localStorage.getItem('currRecipe'), comment);
+    broadcastComment(name, localStorage.getItem('currRecipe'), comment);
 };
 
 async function saveRecipe(recipe){
