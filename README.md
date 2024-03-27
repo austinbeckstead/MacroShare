@@ -3,12 +3,12 @@ Startup application for BYU CS 260
 ## Elevator Pitch
 One of the hardest parts of staying in shape is eating right, and a solid meal plan is necessary for many fitness goals. Especially while tracking macros, many people struggle to find variety and end up eating the same boring foods over and over again. Effective recipes aren't easy to find especially because everyone has different nutritional goals and needs. MacroShare allows you to share and discover recipes based on their nutritional content (calories, protein, fat, carbs). By saving recipes to a personal library, you can create an effective, exciting, and delicious meal plan. 
 ## Design
-![login](/images/login.png)
-![home](/images/home.png)
-![gallery](/images/gallery.png)
-![myGallery](/images/myGallery.png)
-![viewRecipe](/images/viewRecipe.png)
-![editRecipe](/images/editRecipe.png)
+![login](/public/images/login.png)
+![home](/public/images/home.png)
+![gallery](/public/images/gallery.png)
+![myGallery](/public/images/myGallery.png)
+![viewRecipe](/public/images/viewRecipe.png)
+![editRecipe](/public/images/editRecipe.png)
 ## Key Features
   + Secure Login
   + Create Recipes
