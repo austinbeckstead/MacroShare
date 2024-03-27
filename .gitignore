@@ -1,5 +1,6 @@
-.vscode/
-.DS_Store
-node_modules/
-dist/
-dbConfig.json
+node_modules
+lib
+.tsbuildinfo
+
+# This is purely pre-cautionary; when linting becomes slow, delete this eslintcache entry
+.eslintcache

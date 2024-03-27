@@ -22,10 +22,9 @@ function peerProxy(httpServer) {
     // Forward messages to everyone except the sender
     ws.on('message', function message(data) {
       connections.forEach((c) => {
-        if (c.id !== connection.id) {
           c.ws.send(data);
-        }
-      });
+        
+          });
     });
 
     // Remove the closed connection so we don't try to forward anymore
