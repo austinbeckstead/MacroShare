@@ -94,6 +94,12 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
   + Authenticate users by comparing provided credentials against those stored in the database: Authentication works using database data
   + Restrict access to parts of the application that require authorization: (Fixed from first submission): Endpoints use a secureAPI router
 
+## Websocket deliverable
+  + Prerequisite: done- review andd display Simon Websocket
+  + Listen for WebSocket requests on your backend: done- peerProxy.js handles HTTP upgrades, keeps track of connections, and listens for messages. 
+  + Send messages over your WebSocket connection:- when the backend receives a message request, it forwards the data to all connections. 
+  + Connect your WebSocket functionality to your application interface:- In Recipe.js, users can chat about a specific recipe by typing and saving a comment. Clients listen for messages, which update the DOM if the selected recipe matches that of the sender.
+
 
 
 
