@@ -28,7 +28,7 @@ async function loginOrCreate(endpoint) {
 
   if (response.ok) {
     localStorage.setItem('username', username);
-    window.location.href = 'home.html';
+    window.location.href = '../home/home.html';
   } else {
     const body = await response.json();
     const modalEl = document.querySelector('#msgModal');
