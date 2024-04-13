@@ -1,26 +1,42 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.css';
+import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from './login/login';
+import { Gallery } from './gallery/gallery';
+import { MyRecipes } from './myRecipes/myRecipes';
+import { Create } from './create/create';
 
 export default function App() {
   return( 
+    <BrowserRouter>
     <div className='body'>
-
     <header>
-
+        <h1><div className = "logo"> MacroShare </div> </h1>
             <nav>
                 <menu>
-                  <li><a href="gallery.html" class="link">Explore </a></li>
-                  <li><a href="create.html" class="link">Create</a></li>
-                  <li><a href="myRecipes.html"class="link">My Recipes</a></li>
-                  <li><a href="index.html"class="link">Sign Out</a></li>
+                  <li><NavLink to="/gallery" className="link">Explore </NavLink></li>
+                  <li><NavLink to="/create" className="link">Create </NavLink></li>
+                  <li><NavLink to="/myRecipes" className="link">My Recipes </NavLink></li>
+                  <li><NavLink to="" className="link">Sign Out </NavLink></li>
                 </menu>
               </nav>
               <hr />
     </header>
-    <main> App components go here </main>
+    <Routes>
+  <Route path='/gallery' element={<Gallery />} />
+  <Route path='/create' element={<Create />} />
+  <Route path='/myRecipes' element={<MyRecipes />} />
+  <Route path='/' element={<Login />} exact/>
+  <Route path='*' element={<NotFound />} />
+</Routes>
+
     <footer></footer>
 </div>
+  </BrowserRouter>
 
-  )
+);
 }
+function NotFound() {
+    return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
+  }

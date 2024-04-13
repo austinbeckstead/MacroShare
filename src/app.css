@@ -1,4 +1,4 @@
-.main{
+main{
     flex: 1 calc(100vh - 240px);
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     color: #323232;
     gap: 80px;
     }
-body{
+.body{
     display: flex;
     flex-direction: column;
     min-width: 375px;
