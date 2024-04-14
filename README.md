@@ -100,6 +100,14 @@ One of the hardest parts of staying in shape is eating right, and a solid meal p
   + Send messages over your WebSocket connection:- when the backend receives a message request, it forwards the data to all connections. 
   + Connect your WebSocket functionality to your application interface:- In Recipe.js, users can chat about a specific recipe by typing and saving a comment. Clients listen for messages, which update the DOM if the selected recipe matches that of the sender.
 
+## React deliverable
+  + Prerequisite: done- review andd display Simon React
+  + Creating a template starting application using vite and cleaning up what it created: done
+  + Creating a react router that displays stubbed components for the main pieces of your application: done
+  + Converting your previous HTML files into the stubbed components: done
+
+
+
 
 
 
