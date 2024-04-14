@@ -51,7 +51,11 @@ export default function App() {
   <Route path='*' element={<NotFound />} />
 </Routes>
 
-    <footer></footer>
+    <footer>
+    Austin Beckstead 
+        <br />
+        <a href="https://github.com/austinbeckstead/startup" class="link">Github</a>
+    </footer>
 </div>
   </BrowserRouter>
 
