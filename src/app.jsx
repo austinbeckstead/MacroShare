@@ -12,7 +12,6 @@ import './app.css';
 
 
 export default function App() {
-    localStorage.setItem('username', '');
     const [userName, setUserName] = React.useState(localStorage.getItem('username') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
@@ -22,6 +21,7 @@ export default function App() {
     <header>
         <h1><div className = "logo"> MacroShare </div> </h1>
             <nav>
+            {authState === AuthState.Authenticated && (
                 <menu>
                   <li><NavLink to="gallery" className="link">Explore </NavLink></li>
                   <li><NavLink to="create" className="link">Create </NavLink></li>
@@ -30,6 +30,7 @@ export default function App() {
                         Sign Out
                 </button> </NavLink></li>
                 </menu>
+            )}
               </nav>
               <hr />
     </header>

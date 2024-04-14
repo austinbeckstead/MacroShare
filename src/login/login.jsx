@@ -58,7 +58,7 @@ export function Login(props) {
             </div>
       )}
             {props.authState === AuthState.Authenticated && (
-                    <Home />
+                    <Home username = {username}/>
             )}
 
       </div>
