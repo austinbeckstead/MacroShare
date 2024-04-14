@@ -39,6 +39,7 @@ footer{
     background-image: url("/images/kitchen.jpg");
     background-size: 100em;
 }
+
 menu{
     flex: 1;
     display: flex;
@@ -81,6 +82,7 @@ h3{
     display: flex;
     flex-direction: column;
     gap: 0;
+    align-items: center;
 }
 
 .recipe-body{
