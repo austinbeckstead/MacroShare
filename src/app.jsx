@@ -1,14 +1,19 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './app.css';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Gallery } from './gallery/gallery';
 import { MyRecipes } from './myRecipes/myRecipes';
 import { Create } from './create/create';
+import { AuthState } from './login/authState';
+import {Home} from './home/home';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.css';
+
+
 
 export default function App() {
-    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    localStorage.setItem('username', '');
+    const [userName, setUserName] = React.useState(localStorage.getItem('username') || '');
     const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
   return( 
@@ -18,10 +23,12 @@ export default function App() {
         <h1><div className = "logo"> MacroShare </div> </h1>
             <nav>
                 <menu>
-                  <li><NavLink to="/gallery" className="link">Explore </NavLink></li>
-                  <li><NavLink to="/create" className="link">Create </NavLink></li>
-                  <li><NavLink to="/myRecipes" className="link">My Recipes </NavLink></li>
-                  <li><NavLink to="" className="link">Sign Out </NavLink></li>
+                  <li><NavLink to="gallery" className="link">Explore </NavLink></li>
+                  <li><NavLink to="create" className="link">Create </NavLink></li>
+                  <li><NavLink to="myRecipes" className="link">My Recipes </NavLink></li>
+                  <li><NavLink to="" className="link">  <button className="btn" onClick={() => setAuthState(AuthState.Unauthenticated)}>
+                        Sign Out
+                </button> </NavLink></li>
                 </menu>
               </nav>
               <hr />
@@ -31,7 +38,6 @@ export default function App() {
   <Route path='/create' element={<Create />} />
   <Route path='/myRecipes' element={<MyRecipes />} />
   <Route path='/' element={<Login
-                userName={userName}
                 authState={authState}
                 onAuthChange={(userName, authState) => {
                   setAuthState(authState);

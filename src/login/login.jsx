@@ -1,16 +1,13 @@
 import React from 'react';
-
-import { Unauthenticated } from './unauthenticated';
-import { Authenticated } from './authenticated';
 import { AuthState } from './authState';
+import { Home } from '../home/home';
 
-export function Login(authState, onAuthChange) {
-    const [userName, setUserName] = React.useState(props.userName);
+
+
+export function Login(props) {
+    const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const [displayError, setDisplayError] = React.useState(null);
-
     async function login(){
-
         loginOrCreate(`/api/auth/login`);
       }
       async function create() {
@@ -18,8 +15,9 @@ export function Login(authState, onAuthChange) {
       }
 
       async function loginOrCreate(endpoint) {
-        const username = document.querySelector('#username')?.value;
-        const password = document.querySelector('#password')?.value;
+
+        console.log(username);
+        console.log(password);
         const response = await fetch(endpoint, {
           method: 'POST',
           body: JSON.stringify({ username: username, password: password }),
@@ -28,10 +26,10 @@ export function Login(authState, onAuthChange) {
           },
         });
       
-        if (response.ok) {
+        if (response?.status === 200) {
+        console.log("YA");
           localStorage.setItem('username', username);
-          onAuthChange(username, AuthState.Authenticated);
-          window.location.href = '../home/home.html';
+          props.onAuthChange(username, AuthState.Authenticated);
         } else {
           const body = await response.json();
           const modalEl = document.querySelector('#msgModal');
@@ -43,17 +41,25 @@ export function Login(authState, onAuthChange) {
 
   return (
 
+
     <main>
       <h3 className = "intro"> Welcome to Macroshare </h3>
       <div className="container-fluid text-center">
+      {props.authState === AuthState.Unauthenticated && (
+        <div>
             <label>Username</label>
-            <input type="text" id="username" placeholder="username" />
+            <input type="text" id="username" placeholder="username"onChange={(e) => setUsername(e.target.value)}/>
             <br /> <br />
             <label>Password</label>
-            <input type="text" id="password" placeholder="password" />
+            <input type="text" id="password" placeholder="password" onChange={(e) => setPassword(e.target.value)}/>
             <br /> <br />
-            <button className="btn btn-dark" onclick="login()">Login</button>
-            <button className="btn btn-dark"onclick="create()">Create Account</button>
+            <button className="btn btn-dark" onClick={() => login()}>Login</button>
+            <button className="btn btn-dark"onClick={() => create()}>Create Account</button>
+            </div>
+      )}
+            {props.authState === AuthState.Authenticated && (
+                    <Home />
+            )}
 
       </div>
       </main>
