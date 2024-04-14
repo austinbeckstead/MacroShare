@@ -24,7 +24,7 @@ export function Recipe(props) {
                 return (
 
             <div className="recipe">
-                <button type="button" onClick={props.back}>Back</button>
+                <button type="button" className = "btn btn-dark" onClick={props.back}>Back</button>
                 <h2>{currRecipe.name}</h2> 
                <img src={currRecipe.image} alt={currRecipe.name} className="gallery_image" />
                 <div>Calories: {currRecipe.calories} Protein: {currRecipe.protein} Carbs: {currRecipe.carbs} Fat: {currRecipe.fat}</div>
