@@ -23,7 +23,6 @@ app.use(`/api`, apiRouter);
 
 
 apiRouter.post('/auth/create', async (req, res) => {
-  console.log("AAAAAA");
   if (await DB.getUser(req.body.username)) {
     res.status(409).send({ msg: 'Existing user' });
   } else {

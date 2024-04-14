@@ -16,8 +16,6 @@ export function Login(props) {
 
       async function loginOrCreate(endpoint) {
 
-        console.log(username);
-        console.log(password);
         const response = await fetch(endpoint, {
           method: 'POST',
           body: JSON.stringify({ username: username, password: password }),

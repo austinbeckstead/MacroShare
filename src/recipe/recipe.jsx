@@ -21,7 +21,6 @@ export function Recipe(props) {
             return;
         }
 
-        console.log(currName);
                 return (
             <div className="recipe">
                 <h2>{currRecipe.name}</h2> 
