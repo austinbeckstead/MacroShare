@@ -25,7 +25,6 @@ export function Login(props) {
         });
       
         if (response?.status === 200) {
-        console.log("YA");
           localStorage.setItem('username', username);
           props.onAuthChange(username, AuthState.Authenticated);
         } else {
